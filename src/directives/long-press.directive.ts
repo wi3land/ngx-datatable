@@ -37,7 +37,7 @@ export class LongPressDirective implements OnDestroy {
   @HostListener('touchstart', ['$event'])
   onMouseDown(event: MouseEvent | TouchEvent): void {
     // don't do right/middle clicks
-    if ((event.which !== 1 || !this.pressEnabled) && event.type !== 'touchstart') return;
+    if (((<MouseEvent>event).which !== 1 || !this.pressEnabled) && event.type !== 'touchstart') return;
 
     // don't start drag if its on resize handle
     const target = (<HTMLElement>event.target);
